@@ -1,23 +1,24 @@
-# my_list = [-2,41,-26,-3,4,2,-2,1,3,4,24,2,5,2,43,13,4,32,-121]
-from functools import reduce
+from itertools import count
 
-my_list = [1,2,3,5,8,4]
-def nonnegative(lst):
-    return lst>=0
+#not using any method
+lst = [1,2,3]
+some_list = ['a','b','c','b','d','m','n','n']
+new_list = []
+for i in range(len(some_list)):
+    for x in  range(len(some_list)):
+        if some_list[i] == some_list[x] and i!=x:
+            if some_list[x] not in new_list:
+                new_list.append(some_list[x])
+duplicateList = []
+for a in some_list:
+    if some_list.count(a)>=2:
+        if a not in duplicateList:
+            duplicateList.append(a)
+print(f"not with count() {new_list}")
+print(f"with count() {duplicateList}")
 
+duplicates = {item for item in some_list if some_list.count(item)>=2}
 
-def square(lst):
-    return lst**2
-
-
-def sum(key, lst):
-
-    return key+lst
-a = list(filter(nonnegative,my_list))
-print(a)
-print(list(map(square,a)))
-square1= list(map(square,a))
-print(list(zip(my_list , square1)))
-print(reduce(sum, my_list , 0))
-
-
+func = (lambda item: item**2)
+print(list(map(func,lst)))
+print(f"functional programming, list comprehension:  {list(duplicates)}")
