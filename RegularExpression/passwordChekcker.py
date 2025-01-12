@@ -4,8 +4,7 @@ while True:
     password = input("\nenter your pasword: ")
     pattern = re.compile(r"[A-Za-z0-9@#$%^&+=]{8,}\d")
     checking= pattern.fullmatch(password)
-
-    print(less)
+   
     if checking==None:
         print("Please enter true password")
     else:
